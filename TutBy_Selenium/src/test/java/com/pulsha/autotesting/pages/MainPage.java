@@ -12,6 +12,15 @@ public class MainPage extends AbstractPage
 	@FindBy(linkText = "Финансы")
 	private WebElement buttonFinance;
 
+	@FindBy(linkText = "ТВ-гид")
+	private WebElement buttonTV;
+
+	@FindBy(css = "a.topbar-burger")
+	private WebElement buttonResourses;
+
+	@FindBy(linkText = "Все разделы")
+	private WebElement buttonAllResourses;
+
 	@FindBy(css = "a.sub-inf span")
 	private WebElement spanCurrency;
 
@@ -25,7 +34,13 @@ public class MainPage extends AbstractPage
 	{
 		buttonFinance.click();
 	}
-	
+
+	public void clickOnButtonTVPage() { buttonTV.click(); }
+
+	public void clickOnButtonResourses() { buttonResourses.click(); }
+
+	public void clickOnButtonAllResourses() { buttonAllResourses.click(); }
+
 	public String getDollarCurrency()
 	{
 		return spanCurrency.getText();

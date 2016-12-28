@@ -1,5 +1,8 @@
 package com.pulsha.autotesting;
 
+import com.pulsha.autotesting.pages.BuildingsPage;
+import com.pulsha.autotesting.pages.MainPage;
+import com.pulsha.autotesting.pages.ResoursesPage;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -17,12 +20,43 @@ public class TutByAutomationTest {
 		steps.initBrowser();
 	}
 
-	@Test(description = "Currency test")
-	public void oneCanLoginGithub()
+	@Test(description = "Finance test")
+	public void FinanceTest()
 	{
-		steps.openMainPage();
-		steps.openFinancePage();
+		MainPage mainPage = steps.openMainPage();
+		steps.openFinancePage(mainPage);
 		Assert.assertTrue(steps.isCurrencyEqual());
+	}
+
+	@Test(description = "TV test")
+	public void TVTest()
+	{
+		MainPage mainPage = steps.openMainPage();
+		steps.openTVProgramPage(mainPage);
+		Assert.assertTrue(steps.checkTVProgramDay());
+	}
+
+	@Test(description = "Resourses test")
+	public void ResoursesTest()
+	{
+		MainPage mainPage = steps.openMainPage();
+		steps.openResoursesPage(mainPage);
+		Assert.assertTrue(steps.checkTitleCatalog());
+	}
+
+	@Test(description = "Buildings test")
+	public void BuildingsTest()
+	{
+		steps.openBuildingsPage();
+		Assert.assertTrue(steps.checkTitleBuildings());
+	}
+
+	@Test(description = "Windows In Minsk test")
+	public void WindowsTest()
+	{
+		BuildingsPage buildingsPage = steps.openBuildingsPage();
+		steps.openWindowsPage(buildingsPage);
+		Assert.assertTrue(steps.checkTitleWindows());
 	}
 
 	@AfterMethod(description = "Stop Browser")
